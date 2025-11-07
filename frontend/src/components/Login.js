@@ -7,7 +7,7 @@ import { useAuth } from "../context/AuthContext";
 
 
 const Login = () => {
-  const { setIsLoggedIn ,setUser} = useAuth();
+  const { setIsLoggedIn } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [newpassword, setnewpassword] = useState("");

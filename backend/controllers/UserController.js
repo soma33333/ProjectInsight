@@ -45,10 +45,11 @@ const Login= async (req, res) => {
       const token = jwt.sign({ id: user._id,name:user.name,email:user.email }, process.env.JWT_SECRET_KEY, { expiresIn: "1h" });
       res.cookie("token", token, {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production",  // Ensure HTTPS in production
-        sameSite: "lax",  // Required for cross-site cookies
+        secure: process.env.NODE_ENV === "production", // true on Vercel
+        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
         maxAge: 3600000,
       });
+
   
       res.json({ message: "Logged in successfully" });
     } catch (error) {

@@ -45,7 +45,7 @@ const Createnewpost = () => {
   };
 
   return (
-    <div>
+    <div  className="container">
       <form onSubmit={handleSubmit}>
         <div>
           <label>Title:</label>

@@ -142,7 +142,7 @@ const Postpage = () => {
             <strong>Contributer:</strong> {post.Contributer.name}
           </p>
           <p className="created-at">Created At: {new Date(post.updatedAt).toLocaleDateString()}</p>
-          <p>{post.summary}</p>
+          <p  className="summary">{post.summary}</p>
           <hr></hr>
           <div className="comments-section">
             <h2>Comments</h2>

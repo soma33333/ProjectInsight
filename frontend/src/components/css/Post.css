@@ -2,7 +2,9 @@
 .post-card {
   display: flex;
   flex-direction: row;
-  background-color: #ffffff;
+  /* justify-content: space-around; */
+  padding-left: 2%;
+  background-color: #434141;
   border: 1px solid #e0e0e0;
   border-radius: 10px;
   overflow: hidden;
@@ -63,7 +65,7 @@
 
 .post-meta {
   font-size: 0.9rem;
-  color: #777;
+  color:#9a9393;
   margin: 3px 0;
 }
 
@@ -109,6 +111,7 @@
   overflow: hidden;
   transition: max-height 0.3s ease;
   line-height: 1.5rem; /* adjust for spacing */
+  color: white;
 }
 
 .post-summary.collapsed {

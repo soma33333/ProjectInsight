@@ -50,7 +50,7 @@ const Home = () => {
   }, [searchQuery]);
 
   return (
-    <div>
+    <div className="background">
       <div className="search-container">
         <input
           type="text"

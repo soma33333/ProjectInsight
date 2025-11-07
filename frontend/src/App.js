@@ -8,7 +8,7 @@ import Createnewpost from './components/Createnewpost';
 import React, { useState } from 'react';
 import Postpage from './components/Postpage';
 import Editpost from './components/Editpost';
-import Search_post from './components/Search_post';
+// import Search_post from './components/Search_post';
 import { AuthProvider } from "./context/AuthContext"; 
 import Contact from './components/Contact';
 function App() {
@@ -27,7 +27,7 @@ function App() {
       <Route path='createnewpost' element={<Createnewpost/>}/>
       <Route path='post/:id'  element={<Postpage/>}/>
       <Route path='edit/:id'  element={<Editpost/>}/>
-      <Route path='search'  element={<Search_post/>}/>
+      {/* <Route path='search'  element={<Search_post/>}/> */}
       <Route path='contact/:id' element={<Contact/>}/>
     </Route>
 </Routes>

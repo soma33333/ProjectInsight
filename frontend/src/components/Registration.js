@@ -33,7 +33,7 @@ const Registration = () => {
 
   return (
     <div className="registration-container">
-      {" "}\
+      {" "}
       <h2>Register</h2>
       <form onSubmit={handleRegister}>
         <input

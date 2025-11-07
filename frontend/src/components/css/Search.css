@@ -4,27 +4,29 @@
   max-width: 500px;          /* Keep it moderate width */
   margin: 30px auto;         /* Center horizontally */
   padding: 20px 25px;        /* Good padding inside */
-  background-color: #ffffff; /* Clean white background */
+  background-color: #3f4043; /* Clean white background */
   border-radius: 10px;       /* Rounded corners */
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
   display: flex;
+  color: white;
   flex-direction: column;
   gap: 15px;                 /* Space between inputs/buttons */
   font-family: 'Arial', sans-serif;
 }
 
-/* Label styling */
-.search-container label {
-  font-size: 16px;
-  font-weight: 600;
-  color: #333;
+/* Make placeholder text white */
+.search-container input[type="text"]::placeholder {
+  color: #ffffff;
+  opacity: 0.8; /* Slight transparency for aesthetic look */
 }
+
 
 /* Input field styling */
 .search-container input[type="text"] {
   width: 100%;
   padding: 12px 15px;
   border: 1px solid #ccc;
+  color: white;
   border-radius: 8px;
   font-size: 15px;
   outline: none;

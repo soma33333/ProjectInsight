@@ -16,7 +16,7 @@ body {
   max-width: 900px;
   margin: 40px auto;
   padding: 25px;
-  background: #fff;
+  background-color: #434141;
   border-radius: 16px;
   box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -33,6 +33,9 @@ body {
   justify-content: flex-end;
   gap: 15px;
   margin-bottom: 15px;
+}
+.summary{
+  color:white;
 }
 
 .button-link {
@@ -82,7 +85,7 @@ body {
 h1 {
   font-size: 32px;
   text-align: center;
-  color: #222;
+  color: white;
   margin-bottom: 10px;
 }
 
@@ -91,7 +94,8 @@ h1 {
 .created-at {
   text-align: center;
   font-size: 16px;
-  color: #666;
+  color: #9a9393;
+  
 }
 
 .created-at {
@@ -102,12 +106,13 @@ h1 {
 p {
   font-size: 18px;
   line-height: 1.8;
-  color: #444;
+  color: white;
   margin: 15px 0;
 }
 
 /* Comments Section */
 .comments-section {
+
   margin-top: 40px;
 }
 
@@ -121,17 +126,21 @@ p {
 
 /* Comments List */
 .comments-list {
-  background: #f9fafb;
+  background:#666;
   border-radius: 10px;
   padding: 15px;
 }
 
+span{
+  color: white;
+}
 .comment {
-  background: #ffffff;
+  background: #575454;
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 10px 15px;
   margin-bottom: 12px;
+  color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;

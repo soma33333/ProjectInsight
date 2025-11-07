@@ -1,6 +1,6 @@
 const Post = require("../models/Post");
 const cloudinary = require('../config/cloudinaryConfig'); // import the Cloudinary configuration
-
+const Like=require("../models/Like");
 
 const createPost = async (req, res) => {
   try {
@@ -121,6 +121,8 @@ const  get_post= async (req, res) => {
   };
 
 
+
+
 const search_post = async (req, res) => {
   const { query } = req.query; // get search query
 
@@ -163,4 +165,41 @@ const get_receiver=async(req,res)=>{
     }
 }
 
-module.exports={createPost,get_post,getpost_byid,update_post,delete_postbyid,search_post,get_receiver}
+
+const  add_like=async(req, res) => {
+  const userId = req.body.userid;
+  const postId = req.body.postid;
+
+  const existingLike = await Like.findOne({ user: userId, post: postId });
+  console.log(existingLike)
+  if (existingLike) {
+    await existingLike.deleteOne();
+    return res.json({ message: "Unliked" });
+  } else {
+    // console.log(userId,postId)
+    await Like.create({ user: userId, post: postId });
+    return res.json({ message: "Liked" });
+  }
+}
+
+
+const like_count=async(req, res) => {
+  const { id } = req.params;
+  console.log("count",id)
+  const count = await Like.countDocuments({ post: id });
+  res.json({ likes: count });
+}
+
+const  check_like=async(req,res)=>{
+  const userId = req.body.userid;
+  const postId = req.body.postid;
+
+  const existingLike = await Like.findOne({ user: userId, post: postId });
+  if(existingLike){
+    res.json({message:"yes"})
+  }
+  else{
+    res.json({message:"no"})
+  }
+}
+module.exports={createPost,get_post,getpost_byid,update_post,delete_postbyid,search_post,get_receiver,add_like,like_count,check_like}

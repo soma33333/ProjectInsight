@@ -8,7 +8,7 @@
 body {
   font-family: "Poppins", Arial, sans-serif;
   background-color: #f5f7fa;
-  color: #333;
+  /* color: #333; */
 }
 
 /* Main Container */
@@ -118,7 +118,7 @@ p {
 
 .comments-section h2 {
   font-size: 22px;
-  color: #333;
+  color: white;
   margin-bottom: 15px;
   border-bottom: 2px solid #eee;
   padding-bottom: 5px;

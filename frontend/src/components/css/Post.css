@@ -1,9 +1,8 @@
-/* Post container */
+/* 🌟 Post container */
 .post-card {
   display: flex;
   flex-direction: row;
-  /* justify-content: space-around; */
-  padding-left: 2%;
+  align-items: stretch;
   background-color: #434141;
   border: 1px solid #e0e0e0;
   border-radius: 10px;
@@ -12,6 +11,7 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   transition: transform 0.2s, box-shadow 0.2s;
   gap: 20px;
+  padding: 15px;
 }
 
 .post-card:hover {
@@ -19,12 +19,12 @@
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* Image container */
+/* 🖼️ Image container */
 .post-image {
   width: 300px;
-  height: 300px;
+  height: 280px;
   overflow: hidden;
-  border-radius: 10px 0 0 10px;
+  border-radius: 10px;
   flex-shrink: 0;
 }
 
@@ -39,13 +39,15 @@
   transform: scale(1.05);
 }
 
-/* Post info */
+/* 📄 Post info section */
 .post-info {
   flex: 1;
   padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
+  position: relative;
+  color: white;
 }
 
 .title-link {
@@ -63,31 +65,120 @@
   color: #2980b9;
 }
 
-.post-meta {
-  font-size: 0.9rem;
-  color:#9a9393;
-  margin: 3px 0;
+/* ✍️ Summary */
+.post-summary {
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  line-height: 1.6rem;
+  color: #fff;
 }
 
-/* Responsive */
+.post-summary.collapsed {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.post-summary.expanded {
+  display: block;
+}
+
+/* 🔗 Read more button */
+.read-more {
+  color: #3498db;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 5px;
+  transition: color 0.3s;
+}
+
+.read-more:hover {
+  color: #2980b9;
+}
+
+/* 👤 Metadata */
+.post-meta {
+  font-size: 0.9rem;
+  color: #bbb;
+  margin: 4px 0;
+}
+
+/* 👍 Like section */
+.like-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  background-color: #3498db;
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+  border-radius: 50%;
+  width: 3.5rem;
+  height: 3.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.like-button:hover {
+  background-color: #2980b9;
+  transform: scale(1.1);
+}
+
+.like-button i {
+  color: white;
+}
+
+.likes-count {
+  position: absolute;
+  bottom: -20px;
+  right: 3px;
+  color: #ddd;
+  font-size: 0.9rem;
+}
+
+/* 📱 Tablet view (≤ 900px) */
 @media (max-width: 900px) {
   .post-card {
     flex-direction: column;
-    height: auto;
+    align-items: center;
+    text-align: center;
+    padding: 15px;
   }
 
   .post-image {
     width: 100%;
-    height: 200px;
-    border-radius: 10px 10px 0 0;
+    height: 250px;
+    border-radius: 10px;
   }
 
   .post-info {
-    padding: 15px;
+    width: 100%;
+    padding: 10px;
+    position: relative;
+  }
+
+  .like-button {
+    right: 10px;
+    bottom: 10px;
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .likes-count {
+    bottom: -27px;
+    right: 0px;
   }
 }
 
+/* 📱 Mobile view (≤ 600px) */
 @media (max-width: 600px) {
+  .post-card {
+    margin: 12px;
+    padding: 10px;
+  }
+
   .post-title {
     font-size: 1.4rem;
   }
@@ -97,42 +188,20 @@
   }
 
   .post-meta {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
   }
 
-  .post-card {
-    margin: 15px 10px;
+  .like-button {
+    width: 2.8rem;
+    height: 2.8rem;
+    font-size: 1.6rem;
+    right: 10px;
+    bottom: 8px;
   }
-}
 
-
-
-.post-summary {
-  overflow: hidden;
-  transition: max-height 0.3s ease;
-  line-height: 1.5rem; /* adjust for spacing */
-  color: white;
-}
-
-.post-summary.collapsed {
-  display: -webkit-box;
-  -webkit-line-clamp: 3; /* number of visible lines */
-  -webkit-box-orient: vertical;
-  overflow: auto;
-}
-
-.post-summary.expanded {
-  display: block;
-}
-
-.read-more {
-  color: #3498db;
-  cursor: pointer;
-  font-weight: bold;
-  margin-left: 5px;
-  transition: color 0.3s;
-}
-
-.read-more:hover {
-  color: #2980b9;
+  .likes-count {
+      bottom: -27px;
+    right: 0px;
+    font-size: 0.8rem;
+  }
 }

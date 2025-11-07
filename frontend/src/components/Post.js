@@ -12,6 +12,10 @@ const Post = ({ _id, title, summary, image, createdAt, updatedAt, Contributer })
 
   const toggleReadMore = () => setShowFull(!showFull);
 
+  const handlelike = () => {
+    console.log("liked")
+  }
+
   // Check if summary overflows container
   useEffect(() => {
     if (summaryRef.current) {
@@ -48,6 +52,11 @@ const Post = ({ _id, title, summary, image, createdAt, updatedAt, Contributer })
         <p className="post-meta"><strong>Contributer:</strong> {Contributer.name}</p>
         <p className="post-meta"><strong>Created At:</strong> {formattedCreatedAt}</p>
         <p className="post-meta"><strong>Last Modified:</strong> {formattedUpdatedAt}</p>
+        <div className="like-button" onClick={handlelike}>
+          <i className="fa-regular fa-thumbs-up"></i>
+      
+          </div>
+              <p className="likes-count">23344 likes</p>
       </div>
     </div>
   );

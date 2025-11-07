@@ -13,10 +13,12 @@ export const useAuth = () => {
 
 export const AuthProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [user, setUser] = useState([]);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     const checkLoginStatus = async () => {
+      console.log("authcontext...");
+      
       try {
         const response = await axios.get(
          `${process.env.REACT_APP_API_URL}/api/loginstatus`,
@@ -38,7 +40,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     checkLoginStatus();
-  }, []);
+}, [isLoggedIn])
 
   return (
     <AuthContext.Provider value={{ isLoggedIn, user, setIsLoggedIn, setUser }}>

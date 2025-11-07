@@ -120,27 +120,36 @@ const  get_post= async (req, res) => {
       }
   };
 
-  const search_post = async (req, res) => {
-    const { query } = req.query; 
-  
-    try {
-      const posts = await Post.find(
-        query ? { title: { $regex: query, $options: "i" } } : {}
-      );
-  
-      res.json({
-        message: "Posts found successfully",
-        count: posts.length,
-        posts,
-      });
-    } catch (error) {
-      console.error("Search Error:", error);
-      res.status(500).json({
-        message: "Error while searching",
-        error: error.message,
-      });
-    }
-  };
+
+const search_post = async (req, res) => {
+  const { query } = req.query; // get search query
+
+  try {
+    // Populate Contributer to access their name
+    const posts = await Post.find().populate("Contributer");
+
+    // Filter posts by title or author name
+    const filteredPosts = posts.filter((post) => {
+      const titleMatch = post.title.toLowerCase().includes(query?.toLowerCase() || "");
+      const authorMatch = post.Contributer?.name
+        ?.toLowerCase()
+        .includes(query?.toLowerCase() || "");
+      return titleMatch || authorMatch;
+    });
+
+    res.json({
+      message: "Posts found successfully",
+      count: filteredPosts.length,
+      posts: filteredPosts,
+    });
+  } catch (error) {
+    console.error("Search Error:", error);
+    res.status(500).json({
+      message: "Error while searching",
+      error: error.message,
+    });
+  }
+};
     
   
 const get_receiver=async(req,res)=>{

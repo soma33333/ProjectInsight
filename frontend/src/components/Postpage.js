@@ -151,9 +151,9 @@ const Postpage = () => {
                 comments.map((comment) => (
                   <div key={comment._id} className="comment">
                     <pre>
-                      <span><strong>{comment.userId.name}:</strong></span>
+                      <span><strong>{comment.userId.name}:  </strong></span>
                       <span>{comment.content}               </span>
-                      <span>{new Date(comment.createdAt).toLocaleString()}  </span>
+                      {/* <span>{new Date(comment.createdAt).toLocaleString()}  </span> */}
                       {user.id === comment.userId._id && (
                         <button onClick={() => handleDeleteComment(comment._id)} className="delete-comment">
                           Delete

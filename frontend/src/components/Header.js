@@ -1,14 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./css/Header.css";
 import { useAuth } from "../context/AuthContext"; 
 import axios from "axios";
 import { Link, useNavigate, Outlet } from "react-router-dom";
 
-
 const Header = () => {
-  
-  const { isLoggedIn, setIsLoggedIn } = useAuth();
-  const  {user,setUser}=useAuth();
+  const { isLoggedIn, setIsLoggedIn, user, setUser } = useAuth();
   const navigate = useNavigate();
 
   const handle_logout = async () => {
@@ -18,7 +15,7 @@ const Header = () => {
         {},
         { withCredentials: true },
       );
-      setUser([])
+      setUser([]);
       setIsLoggedIn(false);
       navigate("/"); 
     } catch (error) {
@@ -26,35 +23,30 @@ const Header = () => {
     }
   };
 
-
-
-  
   return (
     <>
-    
-      <div>
-        <div>
-          {" "}
-          <Link to="/"  className="link">
+      <header className="header-container">
+        <div className="header-left">
+          <Link to="/" className="link">
             <h2 className="Project_name">Project_Insight</h2>
           </Link>
         </div>
-        <div className="header">
+
+        <div className="header-right">
           {isLoggedIn ? (
             <>
-
-              <Link to="/createnewpost"  className="button-link">Create new post</Link>
-              <h3>Profile_name: {user?.name || "Loading..."}</h3>
+            <span className="profile-name">{user?.name || "Loading..."}</span>
+              <Link to="/createnewpost" className="button-link">Create New Post</Link>
               <button onClick={handle_logout} className="button-link">Logout</button>
             </>
           ) : (
             <>
-              <Link to="/login"  className="button-link">login</Link>
-              <Link to="/register" className="button-link">register</Link>
+              <Link to="/login" className="button-link">Login</Link>
+              <Link to="/register" className="button-link">Register</Link>
             </>
           )}
         </div>
-      </div>
+      </header>
 
       <Outlet />
     </>

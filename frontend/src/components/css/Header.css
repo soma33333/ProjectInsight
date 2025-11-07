@@ -1,82 +1,91 @@
-
-
+/* Global Reset */
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-  }
-  
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
 
-  /* Postpage.css */
+/* Project Name */
 .Project_name {
-  font-size: 2rem;            /* Makes the font size larger */
-  font-weight: bold;          /* Makes the text bold */
-  color: #3498db;             /* Sets the text color */
-  text-transform: uppercase;  /* Transforms the text to uppercase */
-  letter-spacing: 2px;        /* Adds spacing between letters */
-  /* margin: 20px 0;             Adds margin above and below the element */
-  text-align: center;         /* Centers the text */
-  font-family: 'Arial', sans-serif; /* Sets a specific font family */
-  transition: color 0.3s ease; /* Smooth transition for color change */
+  font-size: 2rem;
+  font-weight: bold;
+  color: #3498db;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  transition: color 0.3s ease;
 }
 
 .Project_name:hover {
-  color: #2980b9;             /* Changes color on hover */
-  cursor: pointer;           /* Changes cursor to pointer on hover */
+  color: #2980b9;
+  cursor: pointer;
 }
 
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background-color: #282c34; /* Dark background */
-    color: white; /* White text */
-  }
-  
-  .header a {
-    text-decoration: none; /* Remove underline from links */
-    color: white; /* White link color */
-    margin: 0 1rem; /* Margin between links */
-    font-weight: bold; /* Bold text */
-    transition: color 0.3s; /* Smooth color transition on hover */
-  }
-  
+/* Header Container */
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #282c34;
+  color: white;
+  flex-wrap: wrap; /* Responsive wrapping */
+}
 
-  .header h2 {
-    margin: 0; /* Remove default margin */
-  }
-  
- 
-  
-  .header div {
-    display: flex; /* Align items horizontally */
-    align-items: center; /* Center items vertically */
-  }
-  
-  .header div:last-child {
-    flex-grow: 1; /* Take up remaining space */
-    justify-content: flex-end; /* Align items to the right */
-  }
-  
-  .link{
-    text-decoration: none;
-  }
+/* Left side (Logo/Project Name) */
+.header-left {
+  flex: 1;
+}
 
-  /* Postpage.css */
+/* Right side (Links & Buttons) */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Buttons & Links */
 .button-link {
   display: inline-block;
-  padding: 10px 20px;          /* Adjust padding to make it look like a button */
-  background-color: #3498db;   /* Button background color */
-  color: white;                /* Text color */
-  font-size: 16px;             /* Font size */
-  font-weight: bold;           /* Bold text */
-  text-align: center;          /* Center text */
-  text-decoration: none;       /* Remove underline */
-  border-radius: 5px;          /* Rounded corners */
-  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  padding: 8px 16px;
+  background-color: #3498db;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 8px;
+  border: none;
+  transition: background-color 0.3s ease;
 }
 
 .button-link:hover {
-  background-color: #2980b9;   /* Change background on hover */
-  cursor: pointer;             /* Change cursor to indicate clickability */
+  background-color: #2980b9;
+  cursor: pointer;
+}
+
+/* Profile name */
+.profile-name {
+  font-size: 16px;
+  margin: 0 10px;
+  color: white;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .header-right {
+    justify-content: flex-start;
+    width: 100%;
+    gap: 5px;
+  }
+
+  .Project_name {
+    font-size: 1.6rem;
+  }
 }

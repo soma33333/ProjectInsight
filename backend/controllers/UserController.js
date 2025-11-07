@@ -46,7 +46,7 @@ const Login= async (req, res) => {
       res.cookie("token", token, {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",  // Ensure HTTPS in production
-        sameSite: "none",  // Required for cross-site cookies
+        sameSite: "lax",  // Required for cross-site cookies
         maxAge: 3600000,
       });
   
@@ -57,14 +57,17 @@ const Login= async (req, res) => {
   };
 
   
-  const Logout= (req, res) => {
-    res.clearCookie("token", {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production", 
-      sameSite: "none",
-    });
-    res.json({ message: "Logged out successfully" });
-  };
+  const Logout = (req, res) => {
+  console.log("log-out");
+  res.clearCookie("token", {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+    path: "/", // always specify path
+  });
+  res.json({ message: "Logged out successfully" });
+};
+
   
 
 
@@ -145,6 +148,7 @@ const setpassword= async (req, res) => {
 
  
   const   login_status= async (req, res) => {
+    console.log("login status...")
     res.status(200).json({ user: req.user });
    
   };

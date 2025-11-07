@@ -1,29 +1,53 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./css/Post.css";
 import { Link } from "react-router-dom";
 
-const Post = ({ _id, title, summary, image,createdAt, updatedAt, Contributer }) => {
+const Post = ({ _id, title, summary, image, createdAt, updatedAt, Contributer }) => {
+  const [showFull, setShowFull] = useState(false);
+  const [isOverflowing, setIsOverflowing] = useState(false);
+  const summaryRef = useRef(null);
+
   const formattedCreatedAt = new Date(createdAt).toLocaleDateString();
-  const formattedUpdateddAt = new Date(updatedAt).toLocaleDateString();
+  const formattedUpdatedAt = new Date(updatedAt).toLocaleDateString();
+
+  const toggleReadMore = () => setShowFull(!showFull);
+
+  // Check if summary overflows container
+  useEffect(() => {
+    if (summaryRef.current) {
+      setIsOverflowing(summaryRef.current.scrollHeight > summaryRef.current.clientHeight);
+    }
+  }, [summary, showFull, window.innerWidth]);
+
   return (
-    <div>
-      <div className="container">
-        <Link to={`post/${_id}`}>
-          <div className="imag">
-            <img src={image} alt={title} />
-          </div>
+    <div className="post-card">
+      <Link to={`post/${_id}`} className="image-link">
+        <div className="post-image">
+          <img src={image} alt={title} />
+        </div>
+      </Link>
+
+      <div className="post-info">
+        <Link to={`post/${_id}`} className="title-link">
+          <h2 className="post-title">{title}</h2>
         </Link>
 
-        <div className="info">
-          <Link style={{ textDecoration: "none" }} to={`post/${_id}`}>
-            <h1>title:{title}</h1>
-          </Link>
-          <h3 className="truncated">Summary : {summary}</h3>
-          <h3>Contributer :{Contributer.name}</h3>
-          <h3>Created At :{formattedCreatedAt}</h3>
-          <h3>Last Modified At :{formattedUpdateddAt}</h3>
-          
-        </div>
+        <p
+          className={`post-summary ${showFull ? "expanded" : "collapsed"}`}
+          ref={summaryRef}
+        >
+          {summary}
+        </p>
+
+        {isOverflowing && (
+          <span className="read-more" onClick={toggleReadMore}>
+            {showFull ? " Show less" : " Read more"}
+          </span>
+        )}
+
+        <p className="post-meta"><strong>Contributer:</strong> {Contributer.name}</p>
+        <p className="post-meta"><strong>Created At:</strong> {formattedCreatedAt}</p>
+        <p className="post-meta"><strong>Last Modified:</strong> {formattedUpdatedAt}</p>
       </div>
     </div>
   );
